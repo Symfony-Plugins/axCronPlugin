@@ -81,11 +81,3 @@ EOF;
 		throw new Exception('You must create getName method.');
 	}
 }
-
-function axErrorHandler($errno, $errstr, $errfile, $errline) {
-	$e = new Exception($errstr, $errno);
-	$e->line = $errline;
-	$e->file = $errfile;
-	
-	throw $e;
-}
