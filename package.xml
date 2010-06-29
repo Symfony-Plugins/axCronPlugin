@@ -1,0 +1,127 @@
+<!-- plugins/sfJobeetPlugin/package.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.1" version="2.0"
+   xmlns="http://pear.php.net/dtd/package-2.0"
+   xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+   http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0
+   http://pear.php.net/dtd/package-2.0.xsd">
+  <name>axCronPlugin</name>
+  <channel>plugins.symfony-project.org</channel>
+  <summary>A scheduler plugin.</summary>
+  <description>This plugin aims to create a scheduler to start cron tasks.</description>
+  <lead>
+    <name>Stefano Sala</name>
+    <user>stefano.sala</user>
+    <email>s.sala@axura.net</email>
+    <active>yes</active>
+  </lead>
+  <date>2010-06-29</date>
+  <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+  </version>
+  <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+  </stability>
+  <license uri="http://www.symfony-project.com/license">
+    MIT license
+  </license>
+  <notes />
+ 
+	<contents>
+	  <dir name="/">
+	    <file role="data" name="README" />
+	    <file role="data" name="LICENSE" />
+	 
+	    <dir name="config">
+	      <file role="data" name="routing.yml" />
+	      <file role="data" name="schema.yml" />
+	    </dir>
+	 
+	    <dir name="lib">
+	      <file role="data" name="axCronBaseTask.class.php" />
+	      <file role="data" name="axCronException.class.php" />
+	      
+	      <dir name="filter">
+	        <file role="data" name="axCronTaskFormFilter.class.php" />
+	        <file role="data" name="axCronTaskLogFormFilter.class.php" />
+	        <file role="data" name="axCronTaskParameterFormFilter.class.php" />
+	        <file role="data" name="axCronTaskScheduleFormFilter.class.php" />
+	      </dir>
+	      
+	      <dir name="form">
+	        <file role="data" name="axCronTaskForm.class.php" />
+	        <file role="data" name="axCronTaskLogForm.class.php" />
+	        <file role="data" name="axCronTaskParameterForm.class.php" />
+	        <file role="data" name="axCronTaskScheduleForm.class.php" />
+	      </dir>
+	      
+	      <dir name="model">
+	        <file role="data" name="axCronTask.php" />
+	        <file role="data" name="axCronTaskLog.php" />
+	        <file role="data" name="axCronTaskLogPeer.php" />
+	        <file role="data" name="axCronTaskLogQuery.php" />
+	        <file role="data" name="axCronTaskParameter.php" />
+	        <file role="data" name="axCronTaskParameterPeer.php" />
+	        <file role="data" name="axCronTaskParameterQuery.php" />
+	        <file role="data" name="axCronTaskPeer.php" />
+	        <file role="data" name="axCronTaskQuery.php" />
+	        <file role="data" name="axCronTaskSchedule.php" />
+	        <file role="data" name="axCronTaskSchedulePeer.php" />
+	        <file role="data" name="axCronTaskScheduleQuery.php" />
+	      </dir>
+	      
+	      <dir name="task">
+	        <file role="data" name="axcronRunTask.class.php" />
+	      </dir>
+	    </dir>
+	    
+	    <dir name="modules">
+	      <dir name="ax_cron_task">
+	      	<dir name="actions">
+	      		<file role="data" name="actions.class.php" />
+	      	</dir>
+	      	<dir name="config">
+	      		<file role="data" name="generator.yml" />
+	      	</dir>
+	      	<dir name="lib">
+	      		<file role="data" name="ax_cron_taskGeneratorConfiguration.class.php" />
+	      		<file role="data" name="ax_cron_taskGeneratorHelper.class.php" />
+	      	</dir>
+	      	<dir name="templates">
+	      	</dir>
+	      </dir>
+	    </dir>
+	  </dir>
+	</contents>
+ 
+	<dependencies>
+	  <required>
+	    <php>
+	      <min>5.3.0</min>
+	    </php>
+	    <pearinstaller>
+	      <min>1.4.0</min>
+	    </pearinstaller>
+	    <package>
+	      <name>symfony</name>
+	      <channel>pear.symfony-project.com</channel>
+	      <min>1.4.0</min>
+	    </package>
+	    <package>
+	      <name>sfPropel15Plugin</name>
+	      <channel>pear.symfony-project.com</channel>
+	      <min>1.5.0</min>
+	    </package>
+	  </required>
+	</dependencies>
+ 
+  <phprelease>
+</phprelease>
+ 
+<changelog>
+</changelog>
+</package>

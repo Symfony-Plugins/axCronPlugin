@@ -1,0 +1,52 @@
+axCron plugin
+==============
+
+The `axCronPlugin` is a symfony plugin that provides task scheduling to existing tasks.
+
+Installation
+------------
+
+  * Install the plugin
+
+        $ symfony plugin:install axCronPlugin
+
+  * Rebuild your model, forms and filters and load new tables to database
+
+        $ symfony propel:build-all-load
+        
+  * Enable your plugin in ProjectConfiguration.class.php:
+      
+        $this->enablePlugins('sfPropel15Plugin',
+							 'axCronPlugin',
+							 ...
+							);
+
+  * Enable ax_cron_task module in your settings.yml:
+  
+        enabled_modules:        [ ..., ax_cron_task ]
+
+  * Clear you cache
+
+        $ symfony cc
+        
+  * With the web admin interface you can add your plugin with parameters and schedules and you can run them with:
+  
+        $ symfony axcron:run
+        
+  * Notice that you have to change you task file, extending axCronBase class, here is a stub:
+  
+        class myTask extends axCronBaseTask {
+					 	protected function getTaskNamespace() {
+							return 'my_namespace';
+						}
+						
+						protected function getTaskName() {
+							return 'my_task';
+						}
+
+						protected function doExecute($arguments = array(), $options = array()) {
+							// here you can add your code to be executed
+						}
+				}
+						
+  * I suggest to schedule axcron:run to run every minute
