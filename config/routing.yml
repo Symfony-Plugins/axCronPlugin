@@ -1,0 +1,8 @@
+ax_cron_task:
+  class: sfPropel15RouteCollection
+  options:
+    model:                axCronTask
+    module:               ax_cron_task
+    prefix_path:          /ax_cron_task
+    column:               id
+    with_wildcard_routes: true

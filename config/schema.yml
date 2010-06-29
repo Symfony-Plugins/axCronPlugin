@@ -1,0 +1,42 @@
+propel:
+  _attributes:                    { package: plugins.axCronPlugin.lib.model }
+  
+  axcron_task:
+    _attributes:                  { phpName: axCronTask }
+    id:                           ~
+    name:                         { type: varchar, required: true }
+    is_active:                    { type: boolean, defaultValue: true }
+    _propel_behaviors:
+      timestampable:              ~
+    
+  axcron_task_parameter:
+    _attributes:                  { phpName: axCronTaskParameter }
+    id:                           ~
+    task_id:                      { type: integer, foreignTable: axcron_task, foreignReference: id, required: true, onDelete: cascade }
+    key:                          { type: varchar, required: true }
+    value:                        { type: varchar, required: true }
+    _uniques:                     { uq_cron_parameter: [ task_id, key ] }
+    _propel_behaviors:
+      timestampable:              ~
+  
+  axcron_task_log:
+    _attributes:                  { phpName: axCronTaskLog }
+    id:                           ~
+    task_id:                      { type: integer, foreignTable: axcron_task, foreignReference: id, required: true, onDelete: cascade }
+    started_at:                   { type: timestamp, required: true }
+    ended_at:                     { type: timestamp, required: false }
+    log:                          { type: longvarchar }
+    return_code:                  { type: varchar }
+    pid:                          { type: varchar }
+    _propel_behaviors:
+      timestampable:              ~
+      
+  axcron_task_schedule:
+    _attributes:                  { phpName: axCronTaskSchedule }
+    id:                           ~
+    task_id:                      { type: integer, foreignTable: axcron_task, foreignReference: id, required: true, onDelete: cascade }
+    day:                          { type: integer }
+    start_at:                     { type: time }
+    interval:                     { type: integer }
+    _propel_behaviors:
+      timestampable:              ~

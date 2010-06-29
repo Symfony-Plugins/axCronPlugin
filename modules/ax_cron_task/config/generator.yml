@@ -1,0 +1,21 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           axCronTask
+    theme:                 admin15
+    non_verbose_templates: true
+    with_show:             false
+    singular:              axCronTask
+    plural:                axCronTasks
+    route_prefix:          ax_cron_task
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
