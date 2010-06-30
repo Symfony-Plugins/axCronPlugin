@@ -14,8 +14,14 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
+      list:
+        display: [ =id, name, is_active, is_running, _last_run ]
+        object_actions:
+          _edit: ~
+          _delete: ~
+          log: { action: log }
+      filter:
+        display: [ name, is_active ]
       form:    ~
       edit:    ~
       new:     ~

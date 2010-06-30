@@ -48,6 +48,10 @@ class axCronTask extends BaseaxCronTask {
 		return $count > 0;
 	}
 	
+	public function getIsRunning() {
+    	return $this->isRunning();
+	}
+	
 	/**
 	 * Check if this task has to be started
 	 * @return boolean true or false

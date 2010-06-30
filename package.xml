@@ -1,4 +1,3 @@
-<!-- plugins/sfJobeetPlugin/package.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <package packagerversion="1.4.1" version="2.0"
    xmlns="http://pear.php.net/dtd/package-2.0"
@@ -29,7 +28,7 @@
   <license uri="http://www.symfony-project.com/license">
     MIT license
   </license>
-  <notes />
+  <notes>axCronPlugin</notes>
  
 	<contents>
 	  <dir name="/">
@@ -110,11 +109,13 @@
 	      <name>symfony</name>
 	      <channel>pear.symfony-project.com</channel>
 	      <min>1.4.0</min>
+	      <max>1.4.5</max>
 	    </package>
 	    <package>
 	      <name>sfPropel15Plugin</name>
 	      <channel>pear.symfony-project.com</channel>
-	      <min>1.5.0</min>
+	      <min>1.0.0</min>
+	      <max>1.0.0</max>
 	    </package>
 	  </required>
 	</dependencies>
@@ -123,5 +124,23 @@
 </phprelease>
  
 <changelog>
+	<release>
+    <version>
+      <release>0.1.0</release>
+      <api>0.1.0</api>
+    </version>
+    <stability>
+      <release>alpha</release>
+      <api>alpha</api>
+    </stability>
+    <license uri="http://www.symfony-project.com/license">
+      MIT license
+    </license>
+    <date>2010-06-29</date>
+    <license>MIT</license>
+    <notes>
+       * stefano.sala: First release of the plugin
+    </notes>
+  </release>
 </changelog>
 </package>

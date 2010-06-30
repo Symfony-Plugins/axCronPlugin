@@ -11,6 +11,13 @@ require_once dirname(__FILE__).'/../lib/ax_cron_taskGeneratorHelper.class.php';
  * @author     Axura Srl
  * @version    SVN: $Id: actions.class.php 12474 2008-10-31 10:41:27Z fabien $
  */
-class ax_cron_taskActions extends autoAx_cron_taskActions
-{
+class ax_cron_taskActions extends autoAx_cron_taskActions {
+	public function executeLog(sfWebRequest $request) {
+		$this->axCronTask = $this->getRoute()->getObject();
+		
+		$this->logs = axCronTaskLogQuery::create()
+			->filterByaxCronTask($this->axCronTask)
+			->orderByCreatedAt(Criteria::DESC)
+			->find();
+	}
 }
