@@ -30,26 +30,36 @@ EOF;
 
 		$this->task = axCronTaskQuery::create()->findOneByName($this->namespace . ':' . $this->name);
 		
-		if ($this->task->isRunning()) {
+		if ($this->task && $this->task->isRunning()) {
 			throw new Exception('This task is already running.');
 		}
 		
-		$this->task_log = new axCronTaskLog();
-		$this->task_log->setaxCronTask($this->task);
-		$this->task_log->setStartedAt(time());
-		$this->task_log->setPid(getmypid());
-		$this->task_log->save();
+		if ($this->task) {
+			$this->task_log = new axCronTaskLog();
+			$this->task_log->setaxCronTask($this->task);
+			$this->task_log->setStartedAt(time());
+			$this->task_log->setPid(getmypid());
+			$this->task_log->save();
+		}
 		
 		try {
 			ob_start();
 			
 			$this->doExecute();
 			
-			$this->task_log->setLog(ob_get_contents());
-			$this->task_log->setReturnCode(0);
+			if ($this->task) {
+				$this->task_log->setLog(ob_get_contents());
+				$this->task_log->setReturnCode(0);
+			}
 		} catch (Exception $e) {
-			$this->task_log->setReturnCode(-1);
-			$this->task_log->setLog(serialize($e));
+			if ($this->task) {
+				$this->task_log->setReturnCode(-1);
+				try {
+					$this->task_log->setLog(serialize($e));
+				} catch (Exception $ex) {
+					$this->task_log->setLog($e->__toString());
+				}
+			}
 			
 			if ($to = sfConfig::get('app_axcron_email_to', false)) {
 				$this->getMailer()->composeAndSend(
@@ -61,8 +71,10 @@ EOF;
 			}
 		}
 		
-		$this->task_log->setEndedAt(time());
-		$this->task_log->save();
+		if ($this->task) {
+			$this->task_log->setEndedAt(time());
+			$this->task_log->save();
+		}
 	}
 	
 	protected function doExecute($arguments = array(), $options = array()) {
