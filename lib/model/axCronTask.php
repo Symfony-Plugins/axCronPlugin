@@ -42,6 +42,7 @@ class axCronTask extends BaseaxCronTask {
 	 */
 	public function isRunning() {
 		$count = axCronTaskLogQuery::create()
+			->filterByaxCronTask($this)
 			->filterRunning()
 			->count();
 			
