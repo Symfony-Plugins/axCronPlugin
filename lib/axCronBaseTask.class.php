@@ -23,7 +23,7 @@ EOF;
 	}
 	
 	protected function execute($arguments = array(), $options = array()) {
-		set_error_handler(array("axCronException", "errorHandlerCallback"), E_ERROR);
+		set_error_handler(array("axCronException", "errorHandlerCallback"), E_USER_ERROR & E_ERROR & E_PARSE & E_CORE_ERROR & E_COMPILE_ERROR & E_RECOVERABLE_ERROR & E_FATAL & E_NOTICE & E_CORE_WARNING & E_COMPILE_WARNING &  	 E_STRICT & E_RECOVERABLE);
 		
 		$databaseManager = new sfDatabaseManager($this->configuration);
 		$connection = $databaseManager->getDatabase($options['connection'])->getConnection();
