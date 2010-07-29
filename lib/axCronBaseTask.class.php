@@ -61,6 +61,10 @@ EOF;
 			$this->task_log->setStartedAt(time());
 			$this->task_log->setPid(getmypid());
 			$this->task_log->save();
+			
+			system('renice -19 '.$this->task_log->getPid());
+		} else {
+			system('renice -19 '.getmypid());
 		}
 		
 		try {
