@@ -31,7 +31,7 @@ class axCronTask extends BaseaxCronTask {
 		
 		$command .= '-- ' . $this->getName() . ' ';
 		
-		$command .= ' > /dev/null 2>&1 & echo $!';
+		$command .= ' >> '.sfConfig::get('app_axcron_path_log', '/dev/null').' 2>&1 & echo $!';
 		
 		return $command;
 	}
